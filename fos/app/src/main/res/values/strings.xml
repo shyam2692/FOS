@@ -1,7 +1,14 @@
 <resources>
-  <string name="app_name">fos</string>
+  <string name="app_name">BLINNER</string>
 
   <string name="hello_world">Hello world!</string>
   <string name="action_settings">Settings</string>
   <string name="username_txt">Username</string>
+  <string name="password_txt">Password</string>
+  <string name="title_activity_login">Login</string>
+  <string name="title_activity_signup">Signup</string>
+  <string name="email_txt">Email</string>
+  <string name="login_txt">Login</string>
+  <string name="signup_txt">Sign up</string>
+  <string name="title_activity_main_category">MainCategory</string>
 </resources>
