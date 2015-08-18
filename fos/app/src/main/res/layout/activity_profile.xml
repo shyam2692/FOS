@@ -6,21 +6,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="fos.com.fos.activity.MainCategoryActivity"
+    tools:context="fos.com.fos.activity.ProfileActivity"
     >
 
   <ListView
-      android:id="@+id/lv_main_category"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="#f2f2f2"
-      android:clipToPadding="false"
-      android:divider="@null"
-      android:dividerHeight="8dp"
-      android:fadingEdge="none"
-      android:fitsSystemWindows="true"
-      android:padding="12dp"
-      android:scrollbarStyle="outsideOverlay"
-      tools:ignore="overdraw"
+      android:id="@+id/lv_item"
       ></ListView>
 </RelativeLayout>

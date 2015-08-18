@@ -11,4 +11,9 @@
   <string name="login_txt">Login</string>
   <string name="signup_txt">Sign up</string>
   <string name="title_activity_main_category">MainCategory</string>
+  <string name="title_activity_item">Item</string>
+  <string name="logout">Logout</string>
+  <string name="profile">Profile</string>
+  <string name="title_activity_profile">Your orders</string>
+  <string name="title_activity_owner">OwnerActivity</string>
 </resources>
