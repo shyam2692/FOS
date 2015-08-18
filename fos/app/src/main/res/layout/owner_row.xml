@@ -43,12 +43,51 @@
         android:background="#7a696768"
         />
 
-
+    <Button
+        android:id="@+id/btn_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_line"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="2dp"
+        android:text="Notified"
+        android:layout_alignParentRight="true"
+        android:clickable="false"
+        android:background="@android:color/holo_blue_bright"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/btn_order"
+        android:layout_alignParentRight="true"
+        >
+      <Button
+          android:id="@+id/btn_ready"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="5dp"
+          android:layout_marginRight="5dp"
+          android:padding="2dp"
+          android:text="Ready"
+          />
+      <Button
+          android:id="@+id/btn_delivered"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="5dp"
+          android:layout_marginRight="5dp"
+          android:padding="2dp"
+          android:text="Delivered"
+          />
+    </LinearLayout>
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/v_line"
+        android:layout_alignTop="@id/btn_order"
+        android:layout_below="@id/tv_name"
         android:textColor="@android:color/holo_red_dark"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -64,20 +103,6 @@
         android:ellipsize="end"
         android:maxLines="4"
         android:textSize="12sp"
-        />
-
-    <Button
-        android:id="@+id/btn_order"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_price"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="2dp"
-        android:text="Notified"
-        android:layout_alignParentRight="true"
-        android:background="@android:color/holo_blue_bright"
-        android:clickable="false"
         />
 
   </RelativeLayout>
