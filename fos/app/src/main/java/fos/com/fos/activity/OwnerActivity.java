@@ -1,5 +1,6 @@
 package fos.com.fos.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,8 +30,16 @@ public class OwnerActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_owner);
     lvItem = (ListView) findViewById(R.id.lv_item);
+    ownerAdapter = new OwnerAdapter(OwnerActivity.this, orderList);
+    lvItem.setAdapter(ownerAdapter);
 
     setTitle(ParseUser.getCurrentUser().getUsername() + " - your order(s)");
+    loadOrders();
+  }
+
+  private void loadOrders() {
+    final ProgressDialog progressDialog = new ProgressDialog(this);
+    progressDialog.show();
     ParseQuery<ParseObject> parseQuery = new ParseQuery<ParseObject>("Order");
     parseQuery.whereEqualTo("ownerId", ParseUser.getCurrentUser());
     parseQuery.include("itemId");
@@ -38,9 +47,10 @@ public class OwnerActivity extends AppCompatActivity {
     parseQuery.findInBackground(new FindCallback<ParseObject>() {
       @Override public void done(List<ParseObject> list, ParseException e) {
         if (e == null) {
+          orderList.clear();
           orderList.addAll(list);
-          ownerAdapter = new OwnerAdapter(OwnerActivity.this, orderList);
-          lvItem.setAdapter(ownerAdapter);
+          ownerAdapter.notifyDataSetChanged();
+          progressDialog.dismiss();
         } else {
           Toast.makeText(OwnerActivity.this, Constants.unexpected_error, Toast.LENGTH_LONG).show();
         }
@@ -64,6 +74,9 @@ public class OwnerActivity extends AppCompatActivity {
         Intent iMain = new Intent(this, MainActivity.class);
         iMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(iMain);
+        break;
+      case R.id.action_refresh:
+        loadOrders();
         break;
     }
 

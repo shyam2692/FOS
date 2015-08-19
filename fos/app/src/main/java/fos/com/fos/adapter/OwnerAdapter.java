@@ -50,15 +50,20 @@ public class OwnerAdapter extends BaseAdapter {
         "Estimated Time: " + orderObject.getParseObject("itemId").get("duration").toString()
             + " mins");
     holder.btnStatus.setText(orderObject.getString("status"));
-    holder.btnReady.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        orderObject.put("status", "Ready");
-        orderObject.saveInBackground();
-        notifyDataSetChanged();
-        sendReadyNotification(orderObject.getParseObject("userId").getObjectId());
-        Toast.makeText(context, "Notified successfully!", Toast.LENGTH_SHORT).show();
-      }
-    });
+    if (orderObject.getString("status").equals("Notified")) {
+      holder.btnReady.setEnabled(true);
+      holder.btnReady.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          orderObject.put("status", "Ready");
+          orderObject.saveInBackground();
+          notifyDataSetChanged();
+          sendReadyNotification(orderObject.getParseObject("userId").getObjectId());
+          Toast.makeText(context, "Notified successfully!", Toast.LENGTH_SHORT).show();
+        }
+      });
+    } else {
+      holder.btnReady.setEnabled(false);
+    }
     holder.btnDelivered.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         orderObject.put("status", "Delivered");

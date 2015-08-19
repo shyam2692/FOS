@@ -16,4 +16,5 @@
   <string name="profile">Profile</string>
   <string name="title_activity_profile">Your orders</string>
   <string name="title_activity_owner">OwnerActivity</string>
+  <string name="refresh">Reload</string>
 </resources>
