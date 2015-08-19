@@ -30,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     ParseQuery<ParseObject> parseQuery = new ParseQuery<ParseObject>("Order");
     parseQuery.whereEqualTo("userId", ParseUser.getCurrentUser());
     parseQuery.include("itemId");
+    parseQuery.orderByDescending("updatedAt");
     parseQuery.findInBackground(new FindCallback<ParseObject>() {
       @Override public void done(List<ParseObject> list, ParseException e) {
         if (e == null) {

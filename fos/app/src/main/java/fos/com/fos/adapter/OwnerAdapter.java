@@ -64,13 +64,19 @@ public class OwnerAdapter extends BaseAdapter {
     } else {
       holder.btnReady.setEnabled(false);
     }
-    holder.btnDelivered.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        orderObject.put("status", "Delivered");
-        orderObject.saveInBackground();
-        notifyDataSetChanged();
-      }
-    });
+
+    if (orderObject.getString("status").equals("Ready")) {
+      holder.btnDelivered.setEnabled(true);
+      holder.btnDelivered.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+          orderObject.put("status", "Delivered");
+          orderObject.saveInBackground();
+          notifyDataSetChanged();
+        }
+      });
+    } else {
+      holder.btnDelivered.setEnabled(false);
+    }
     Picasso.with(context)
         .load(orderObject.getParseObject("itemId").getString("image"))
         .resize(250, 250)
